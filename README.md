@@ -28,14 +28,14 @@ It wrote the code, ran away, and now the game is unplayable.
 **Game purpose:** A number-guessing game where the player picks a difficulty, then tries to guess a randomly chosen secret number within a limited number of attempts. Correct guesses earn points; wrong guesses cost points.
 
 **Bugs found:**
-1. **Backwards hints** — `check_guess` returned "Go HIGHER!" when the guess was too high and "Go LOWER!" when too low; the directions were swapped.
-2. **String comparison on even attempts** — `app.py` cast the secret to a string every other attempt, breaking numeric comparison and producing random wrong hints.
-3. **Hard difficulty easier than Normal** — Hard used range 1–50 while Normal used 1–100; the difficulty labels were misleading.
-4. **Score rewarded wrong guesses** — "Too High" on even attempt numbers gave +5 points instead of deducting them.
-5. **Attempts off-by-one** — Initial attempts was set to 1 (should be 0), making the "Attempts left" counter wrong from the start.
-6. **Hardcoded range in UI** — The info banner always said "1 and 100" regardless of difficulty setting.
-7. **Tests compared tuple to string** — `check_guess` returns `(outcome, message)` but tests asserted `result == "Win"`.
-8. **`logic_utils.py` was all stubs** — All four game-logic functions needed to be moved from `app.py` into `logic_utils.py`.
+1. **Backwards hints**: `check_guess` returned "Go HIGHER!" when the guess was too high and "Go LOWER!" when too low; the directions were swapped.
+2. **String comparison on even attempts**: `app.py` cast the secret to a string every other attempt, breaking numeric comparison and producing random wrong hints.
+3. **Hard difficulty easier than Normal**: Hard used range 1–50 while Normal used 1–100; the difficulty labels were misleading.
+4. **Score rewarded wrong guesses**: "Too High" on even attempt numbers gave +5 points instead of deducting them.
+5. **Attempts off-by-one**: Initial attempts was set to 1 (should be 0), making the "Attempts left" counter wrong from the start.
+6. **Hardcoded range in UI**: The info banner always said "1 and 100" regardless of difficulty setting.
+7. **Tests compared tuple to string**: `check_guess` returns `(outcome, message)` but tests asserted `result == "Win"`.
+8. **`logic_utils.py` was all stubs**: All four game-logic functions needed to be moved from `app.py` into `logic_utils.py`.
 
 **Fixes applied:**
 - Moved all logic functions into `logic_utils.py` and updated `app.py` to import from it.
